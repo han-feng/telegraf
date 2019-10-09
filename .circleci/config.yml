@@ -122,8 +122,8 @@ workflows:
               only: /.*/
       - 'package':
           requires:
-            - 'test-go-1.12'
-            - 'test-go-1.12-386'
+            # - 'test-go-1.12'
+            # - 'test-go-1.12-386'
             - 'test-go-1.13'
             - 'test-go-1.13-386'
   #     - 'release':
