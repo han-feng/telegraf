@@ -87,11 +87,17 @@ targets = {
     'telegraf' : './cmd/telegraf',
 }
 
+# supported_builds = {
+#     'darwin': [ "amd64" ],
+#     "windows": [ "amd64", "i386" ],
+#     "linux": [ "amd64", "i386", "armhf", "armel", "arm64", "static_amd64", "s390x", "mipsel", "mips"],
+#     "freebsd": [ "amd64", "i386" ]
+# }
+# modify by han_feng
 supported_builds = {
-    'darwin': [ "amd64" ],
-    "windows": [ "amd64", "i386" ],
-    "linux": [ "amd64", "i386", "armhf", "armel", "arm64", "static_amd64", "s390x", "mipsel", "mips"],
-    "freebsd": [ "amd64", "i386" ]
+    'darwin': ["amd64"],
+    "windows": ["amd64", "i386"],
+    "linux": ["amd64", "i386", "arm64", "static_amd64", "mipsel"]
 }
 
 supported_packages = {
@@ -576,8 +582,9 @@ def package(build_output, pkg_name, version, nightly=False, iteration=1, static=
                     shutil.copy(fr, to)
 
                 for package_type in supported_packages[platform]:
-                    if package_type == "rpm" and arch in ["mipsel", "mips"]:
-                        continue
+                    # modify by han_feng
+                    # if package_type == "rpm" and arch in ["mipsel", "mips"]:
+                    #     continue
                     # Package the directory structure for each package type for the platform
                     logging.debug("Packaging directory '{}' as '{}'.".format(build_root, package_type))
                     name = pkg_name
