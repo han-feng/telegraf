@@ -468,6 +468,8 @@ def build(version=None,
             goarch = "arm"
         elif arch == "mipsel":
             goarch = "mipsle"
+        elif arch == "mips64el":
+            goarch = "mips64le"
         build_command += "GOOS={} GOARCH={} ".format(platform, goarch)
 
         if "arm" in arch:
