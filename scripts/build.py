@@ -87,18 +87,18 @@ targets = {
     'telegraf' : './cmd/telegraf',
 }
 
+# modify by han_feng
 # supported_builds = {
 #     'darwin': [ "amd64" ],
 #     "windows": [ "amd64", "i386" ],
 #     "linux": [ "amd64", "i386", "armhf", "armel", "arm64", "static_amd64", "s390x", "mipsel", "mips"],
 #     "freebsd": [ "amd64", "i386" ]
 # }
-# modify by han_feng
 supported_builds = {
-    'darwin': ["amd64"],
     "windows": ["amd64", "i386"],
-    "linux": ["amd64", "i386", "arm64", "static_amd64", "mips64el"]
+    "linux": ["amd64", "i386", "arm64", "mips64el"]
 }
+# modify end
 
 supported_packages = {
     "darwin": [ "tar" ],
@@ -587,6 +587,7 @@ def package(build_output, pkg_name, version, nightly=False, iteration=1, static=
                     # modify by han_feng
                     # if package_type == "rpm" and arch in ["mipsel", "mips"]:
                     #     continue
+                    # modify end
                     # Package the directory structure for each package type for the platform
                     logging.debug("Packaging directory '{}' as '{}'.".format(build_root, package_type))
                     name = pkg_name
@@ -771,7 +772,7 @@ def main(args):
 
     # modify by han_feng
     # package ./vendor
-    run("zip -r ./build/vendor.zip ./vendor", shell=True)
+    # run("zip -r ./build/vendor.zip ./vendor", shell=True)
     # modify end
 
     # Build packages
