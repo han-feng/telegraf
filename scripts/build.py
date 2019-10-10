@@ -769,6 +769,11 @@ def main(args):
                 return 1
             build_output.get(platform).update( { arch : od } )
 
+    # modify by han_feng
+    # package ./vendor
+    run("zip -r ./build/vendor.zip ./vendor", shell=True)
+    # modify end
+
     # Build packages
     if args.package:
         if not check_path_for("fpm"):
